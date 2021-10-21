@@ -11,6 +11,9 @@ class NuzlockeTable extends React.Component {
             time: new Date(0)
         };
 
+        console.log('Debug: NuzlockeTable created with props:');
+        console.log(props);
+
         this.timerChangeEvent = this.timerChangeEvent.bind(this);
         this.setEncounterTime = this.setEncounterTime.bind(this);
     }

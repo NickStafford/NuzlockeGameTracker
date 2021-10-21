@@ -7,10 +7,12 @@ function getOrAdd(db, key, source, successCallback) {
   getReq.onsuccess = function (event) {
     //will be null if no games
     if (event.target.result) {
-      window.dataObj = event.target.result.value
+      console.log('Debug: Saved game data found for key \'' + key + '\'')
+      console.log(event.target.result)
+      window.dataObj = event.target.result
       successCallback()
     } else {
-      fetch(source)
+      console.log('Debug: No saved game data found for key \'' + key + '\'')
         .then((result) => result.json())
         .then((result) => {
           db.transaction('games', 'readwrite').objectStore('games').add(result)
