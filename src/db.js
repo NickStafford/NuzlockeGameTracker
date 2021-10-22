@@ -38,7 +38,7 @@ class dbService {
 
           //Generic error handler
           this.db.onerror = function (event) {
-            console.log('Database error: ' + event.target.errorCode)
+            console.log('Database error: ' + event.target.error.message)
           }
 
           this.loadInitial(successCallback)
@@ -51,7 +51,9 @@ class dbService {
     this.getOrAdd(
       this.db,
       this.serverData?.default,
-      this.serverData.games.filter((game) => game.name == this.serverData.default)[0].path,
+      this.serverData.games.filter(
+        (game) => game.name == this.serverData.default,
+      )[0].path,
       successCallback,
     )
   }
@@ -72,10 +74,9 @@ class dbService {
         console.log(event.target.result)
         successCallback(event.target.result)
       } else {
-        console
-          .log("Debug: No saved game data found for key '" + key + "'")
+        console.log("Debug: No saved game data found for key '" + key + "'")
 
-          fetch(source)
+        fetch(source)
           .then((result) => result.json())
           .then((result) => {
             db.transaction('games', 'readwrite')
@@ -90,10 +91,10 @@ class dbService {
   ///Generic Save
   ///Key is optional if a keypath is being used
   saveToDB(db, value, key) {
-    this.db
-      .transaction('games', 'readwrite')
-      .objectStore('games')
-      .put(value, key)
+    console.log('Debug: Saving...')
+    console.log(value)
+
+    db.transaction('games', 'readwrite').objectStore('games').put(value, key)
   }
 
   ///Instance specific save
