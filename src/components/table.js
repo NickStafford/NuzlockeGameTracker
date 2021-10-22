@@ -1,4 +1,4 @@
-import { TableBody, TableContainer, TableRow, Paper, TableCell, Box } from '@material-ui/core';
+import { TableBody, TableContainer, TableRow, Paper, TableCell, Box, Button } from '@material-ui/core';
 import React from 'react';
 import { Clock } from 'small-react-timer';
 import AddBoxIcon from '@material-ui/icons/AddBox';
@@ -7,7 +7,7 @@ class NuzlockeTable extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: this.props.data?.battleencounters,
+            data: this.props.data,
             time: new Date(0)
         };
 
@@ -27,7 +27,7 @@ class NuzlockeTable extends React.Component {
 
     setEncounterTime(index) {
         let newData = this.state.data;
-        newData[index].time = this.state.time;
+        newData.battleencounters[index].time = this.state.time;
 
         this.setState((prevState) => ({
             data: newData
@@ -36,11 +36,11 @@ class NuzlockeTable extends React.Component {
 
     render() {
         return (
-            <Box component={Paper}>
+            <Box component={Paper} textAlign="center">
                 <Clock debug={false} auto={true} onTimerChange={this.timerChangeEvent}></Clock>
                 <TableContainer component={Paper}>
                     <TableBody>
-                        {this.state.data?.map((encounter, index) => (
+                        {this.state.data?.battleencounters?.map((encounter, index) => (
                             <TableRow key={'Encounter'+index}>
                                 <TableCell align="center" width="30%">
                                     <Box
@@ -49,7 +49,7 @@ class NuzlockeTable extends React.Component {
                                         justifyContent="center"
                                         alignItems="center"
                                     >
-                                        <img src={this.props.data.sprites.find(sprite => sprite.name = encounter.opponent).url} alt=""></img>
+                                        <img src={this.state.data.sprites.find(sprite => sprite.name = encounter.opponent).url} alt=""></img>
                                         {encounter.opponent}
                                     </Box>
                                 </TableCell>
@@ -71,6 +71,7 @@ class NuzlockeTable extends React.Component {
                         ))}
                     </TableBody>
                 </TableContainer>
+                <Button sx={{ left: '75px'}} variant="contained" onClick={this.props.db.save(this.state.data)}>Save</Button>
             </Box>
         );
     }

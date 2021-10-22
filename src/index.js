@@ -5,10 +5,10 @@ import App from './App'
 import reportWebVitals from './reportWebVitals'
 import dbInit from './db';
 
-dbInit(function () {
+window.dbService = dbInit(function(data) {
   ReactDOM.render(
     <React.StrictMode>
-      <App />
+      <App data={data}/>
     </React.StrictMode>,
     document.getElementById('root'),
   )
