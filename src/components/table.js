@@ -73,6 +73,7 @@ class NuzlockeTable extends React.Component {
           debug={false}
           auto={true}
           onTimerChange={this.timerChangeEvent}
+          time={this.state.data.time}
         ></Clock>
         <Typography variant="h4">
           {this.state.data.title}
