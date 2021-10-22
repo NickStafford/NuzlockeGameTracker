@@ -6,12 +6,22 @@
       "opponent": "Rival",
       "level": 5,
       "time": null
+    },
+    {
+      "title": "Falkner - Violet Gym",
+      "opponent": "Falkner",
+      "level": 10,
+      "time": null
     }
   ],
   "sprites": [
     {
       "name": "Rival",
       "url": "https://cdn2.bulbagarden.net/upload/5/5d/Silver_OD.png"
+    },
+    {
+      "name": "Falkner",
+      "url": "https://cdn2.bulbagarden.net/upload/0/01/Falkner_IV_OD.png"
     }
   ]
 }

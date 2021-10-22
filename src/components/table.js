@@ -27,10 +27,7 @@ class NuzlockeTable extends React.Component {
       style: {
         alignItems: 'center',
         justifyContent: 'space-evenly',
-        'vertical-align': 'middle',
-        '& .MuiTableCell-root': {
-          'line-height': '1px',
-        },
+        'vertical-align': 'middle'
       },
     }
 
@@ -75,29 +72,21 @@ class NuzlockeTable extends React.Component {
           onTimerChange={this.timerChangeEvent}
           time={this.state.data.time}
         ></Clock>
-        <Typography variant="h4">
-          {this.state.data.title}
-        </Typography>
+        <Typography variant="h4">{this.state.data.title}</Typography>
         <TableContainer component={Paper}>
           <TableBody>
             {this.state.data?.battleencounters?.map((encounter, index) => (
               <TableRow key={'Encounter' + index}>
                 <TableCell align="center" width="30%">
-                  <Box
-                    display="flex"
-                    flexDirection="column"
-                    justifyContent="center"
-                    alignItems="center"
-                  >
+                  <Box>
                     <img
                       src={
                         this.state.data.sprites.find(
-                          (sprite) => (sprite.name = encounter.opponent),
+                          (sprite) => sprite.name == encounter.opponent,
                         ).url
                       }
-                      alt=""
                     ></img>
-                    {encounter.opponent}
+                    {encounter.title}
                   </Box>
                 </TableCell>
                 <TableCell width="30%">Level {encounter.level}</TableCell>

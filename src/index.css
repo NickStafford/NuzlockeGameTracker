@@ -11,3 +11,11 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+.MuiTableCell-body .MuiBox-root {
+  display: flex;
+  flex-Direction: column;
+  justify-Content: center;
+  align-Items: center;
+}
