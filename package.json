@@ -10,7 +10,7 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
-    "small-react-timer": "^1.0.4",
+    "small-react-timer": "^1.0.9",
     "web-vitals": "^1.1.2"
   },
   "scripts": {

@@ -43,6 +43,10 @@ class NuzlockeTable extends React.Component {
     this.setState((prevState) => {
       data: Object.assign(prevState.data, { time: time })
     })
+
+    if(this.props.autosave){
+      this.state.db.save(this.state.data)
+    }
   }
 
   setEncounterTime(index) {
@@ -113,6 +117,7 @@ class NuzlockeTable extends React.Component {
           </TableBody>
         </TableContainer>
         <Button
+          color="primary"
           variant="contained"
           onClick={(e) => this.state.db.save(this.state.data)}
         >

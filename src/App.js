@@ -8,7 +8,7 @@ function App(props) {
 
   return (
     <header className="App-header">
-      <NuzlockeTable db={window.dbService} data={props.data}></NuzlockeTable>
+      <NuzlockeTable db={window.dbService} data={props.data} autosave={true}></NuzlockeTable>
       <img src={logo} className="App-logo" alt="logo" />
     </header>
   )
