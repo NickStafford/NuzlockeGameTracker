@@ -10,20 +10,14 @@ import {
 } from '@material-ui/core'
 import React from 'react'
 import { Clock } from 'small-react-timer'
-import AddBoxIcon from '@material-ui/icons/AddBox'
-import RotateLeftIcon from '@material-ui/icons/RotateLeft'
+import Encounter from './encounter'
 
 class NuzlockeTable extends React.Component {
   constructor(props) {
     super(props)
 
     this.state = {
-      db: this.props.db,
-      data: Object.defineProperty(this.props.data, 'time', {
-        value: this.props.data.time || new Date(0),
-        writable: true,
-        enumerable: true,
-      }),
+      time: this.props.data.time || new Date(0),
       style: {
         alignItems: 'center',
         justifyContent: 'space-evenly',
@@ -35,27 +29,18 @@ class NuzlockeTable extends React.Component {
     console.log(props)
 
     this.timerChangeEvent = this.timerChangeEvent.bind(this)
-    this.setEncounterTime = this.setEncounterTime.bind(this)
-    this.resetEncounterTime = this.resetEncounterTime.bind(this)
   }
 
   timerChangeEvent(time) {
-    this.setState((prevState) => {
-      data: Object.assign(prevState.data, { time: time })
-    })
-
-    if(this.props.autosave){
-      this.state.db.save(this.state.data)
-    }
-  }
-
-  setEncounterTime(index) {
-    let newData = this.state.data
-    newData.battleencounters[index].time = this.state.data.time
-
     this.setState((prevState) => ({
-      data: newData,
+      time: time
     }))
+
+    if (this.props.autosave) {
+      this.props.db.save({
+        title: this.props.data.title,
+        time: this.state.time})
+    }
   }
 
   resetEncounterTime(index) {
@@ -74,47 +59,19 @@ class NuzlockeTable extends React.Component {
           debug={false}
           auto={true}
           onTimerChange={this.timerChangeEvent}
-          time={this.state.data.time}
+          time={this.state.time}
         ></Clock>
-        <Typography variant="h4">{this.state.data.title}</Typography>
+        <Typography variant="h4">{this.props.data.title}</Typography>
         <TableContainer component={Paper}>
-          <TableBody>
-            {this.state.data?.battleencounters?.map((encounter, index) => (
-              <TableRow key={'Encounter' + index}>
-                <TableCell align="center" width="30%">
-                  <Box>
-                    <img
-                      src={
-                        this.state.data.sprites.find(
-                          (sprite) => sprite.name == encounter.opponent,
-                        ).url
-                      }
-                    ></img>
-                    {encounter.title}
-                  </Box>
-                </TableCell>
-                <TableCell width="30%">Level {encounter.level}</TableCell>
-                <TableCell width="40%">
-                  {typeof encounter.time?.toLocaleTimeString == 'function'
-                    ? encounter.time.toLocaleTimeString('en-GB', {
-                        timeZone: 'UTC',
-                      })
-                    : '--:--:--'}
-                </TableCell>
-                <TableCell>
-                  {encounter.time ? (
-                    <RotateLeftIcon
-                      onClick={(e) => this.resetEncounterTime(index, e)}
-                    />
-                  ) : (
-                    <AddBoxIcon
-                      onClick={(e) => this.setEncounterTime(index, e)}
-                    />
-                  )}
-                </TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
+          <table>
+            <TableBody>
+              {this.props.data?.battleencounters?.map((encounter, index) => {
+                var sprite = this.props.data.sprites.find((x) => x.name == encounter.opponent).url;
+
+                return <Encounter key={'Encounter' + index} sprite={sprite} encounter={encounter} time={this.state.time} /> //God I hope the time is an object reference.
+              })}
+            </TableBody>
+          </table>
         </TableContainer>
         <Button
           color="primary"

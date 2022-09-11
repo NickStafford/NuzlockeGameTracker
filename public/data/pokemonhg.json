@@ -8,6 +8,11 @@
       "time": null
     }
   ],
+  "lcoations": [
+    {
+      "name": "Route 1"
+    }
+  ],
   "sprites": [
     {
       "name": "Rival",
