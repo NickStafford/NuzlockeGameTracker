@@ -67,19 +67,13 @@ class NuzlockeTable extends React.Component {
             <TableBody>
               {this.props.data?.battleencounters?.map((encounter, index) => {
                 var sprite = this.props.data.sprites.find((x) => x.name == encounter.opponent).url;
-
-                return <Encounter key={'Encounter' + index} sprite={sprite} encounter={encounter} time={this.state.time} /> //God I hope the time is an object reference.
+                var key = this.props.data.title + '_' + encounter.title;
+                
+                return <Encounter db={this.props.db} key={key} title={key} sprite={sprite} encounter={encounter} time={this.state.time} /> //God I hope the time is an object reference.
               })}
             </TableBody>
           </table>
         </TableContainer>
-        <Button
-          color="primary"
-          variant="contained"
-          onClick={(e) => this.state.db.save(this.state.data)}
-        >
-          Save
-        </Button>
       </Box>
     )
   }

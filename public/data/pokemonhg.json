@@ -3,6 +3,7 @@
   "battleencounters": [
     {
       "title": "Rival - CherryGrove",
+      "location": "Cherrygrove",
       "opponent": "Rival",
       "level": 5,
       "time": null

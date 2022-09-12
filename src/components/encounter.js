@@ -18,13 +18,46 @@ class Encounter extends React.Component {
 
         console.log('Debug: New encounter component created:')
         console.log(props);
+
+        this.load = this.load.bind(this);
     }
 
-    resetEncounterTime(){
+    load() {
+        debugger;
+        this.props.db.getOrAdd(
+            this.props?.db?.db,
+            this.props?.title,
+            'encounters',
+            {
+                "title": this.props?.title,
+                "time": null //props holds the reference to the timer time.
+            },
+            (result) => {
+                console.log('Updating encounter state...')
+                debugger;
 
+                this.setState((prevState) => ({
+                    "title": this.props.title,
+                    "time": result?.time
+                    //props holds the reference to the timer time.
+                }))
+            }
+        )
     }
 
-    setEncounterTime() {
+    setEncounterTime(time) {
+        this.props.db.save(
+            'encounters',
+            {
+                "title": this.props.title,
+                "time": time //props holds the reference to the timer time.
+            });
+
+        this.load();
+    }
+
+    componentDidMount(){
+        this.load();
     }
 
     render() {
@@ -40,20 +73,20 @@ class Encounter extends React.Component {
                 </TableCell>
                 <TableCell width="30%">Level {this.props.encounter.level}</TableCell>
                 <TableCell width="40%">
-                    {typeof this.props.encounter.time?.toLocaleTimeString == 'function'
-                        ? this.props.encounter.time.toLocaleTimeString('en-GB', {
+                    {typeof this.state?.time?.toLocaleTimeString == 'function'
+                        ? this.state?.time.toLocaleTimeString('en-GB', {
                             timeZone: 'UTC',
                         })
                         : '--:--:--'}
                 </TableCell>
                 <TableCell>
-                    {this.props.encounter.time ? (
+                    {this.state?.time > 0 ? (
                         <RotateLeftIcon
-                            onClick={(e) => this.resetEncounterTime(e)}
+                            onClick={(e) => this.setEncounterTime(null)}
                         />
                     ) : (
                         <AddBoxIcon
-                            onClick={(e) => this.setEncounterTime(e)}
+                            onClick={(e) => this.setEncounterTime(this.props.time)}
                         />
                     )}
                 </TableCell>

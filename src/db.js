@@ -68,8 +68,8 @@ class dbService {
           {title: result.title,
           time: null},
           (dbResult) => {
-            result.time = dbResult.time;
-            successCallback(result)
+            result.time = dbResult?.time;
+            successCallback?.(result)
           }
         )
       })
@@ -88,16 +88,12 @@ class dbService {
     getReq.onsuccess = function (event) {
       //will be null if no games
       if (event.target.result) {
-        console.log("Debug: Saved game data found for key '" + key + "'")
-        console.log(event.target.result)
-        successCallback(event.target.result)
+        successCallback?.(event.target.result)
       } else {
-        console.log("Debug: No saved game data found for key '" + key + "'")
-
         db.transaction(store, 'readwrite')
           .objectStore(store)
           .add(data)
-        successCallback()
+        successCallback?.()
       }
     }.bind(this) //Because this is set as a callback function we need to bind it to this instance of the dbService
 
@@ -107,9 +103,6 @@ class dbService {
   ///Generic Save
   ///Key is optional if a keypath is being used
   saveToDB(db, store, value, key) {
-    console.log('Debug: Saving...')
-    console.log(value)
-
     db.transaction(store, 'readwrite').objectStore(store).put(value, key)
   }
 
