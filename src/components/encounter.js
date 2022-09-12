@@ -20,6 +20,16 @@ class Encounter extends React.Component {
         console.log(props);
 
         this.load = this.load.bind(this);
+
+        this.state = {
+            style: {
+                alignItems: 'center',
+                justifyContent: 'space-evenly',
+                'text-align': 'center',
+                color: 'red',
+                'vertical-align': 'middle'
+            }
+        }
     }
 
     load() {
@@ -56,7 +66,7 @@ class Encounter extends React.Component {
         this.load();
     }
 
-    componentDidMount(){
+    componentDidMount() {
         this.load();
     }
 
@@ -71,7 +81,14 @@ class Encounter extends React.Component {
                         {this.props.encounter.title}
                     </Box>
                 </TableCell>
-                <TableCell width="30%">Level {this.props.encounter.level}</TableCell>
+                <TableCell width="30%" align="center">
+                    <b>Level {this.props.encounter.level}</b>
+                    {this.props.encounter?.location ?
+                        <>
+                            <br /> {this.props.encounter.location}
+                        </>
+                        : ''}
+                </TableCell>
                 <TableCell width="40%">
                     {typeof this.state?.time?.toLocaleTimeString == 'function'
                         ? this.state?.time.toLocaleTimeString('en-GB', {
