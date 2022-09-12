@@ -30,6 +30,16 @@ class dbService {
           this.db.createObjectStore('games', {
             keyPath: 'title',
           })
+
+          //Make a new object store for storing our data about the encounters. Title of the game is the key.
+          this.db.createObjectStore('encounters', {
+            keyPath: 'title',
+          })
+
+          //Make a new object store for storing our data about the routes. Title of the game is the key.
+          this.db.createObjectStore('locations', {
+            keyPath: 'title',
+          })
         }.bind(this) //Because this is set as a callback function we need to bind it to this instance of the dbService
 
         this.dbRequest.onsuccess = function (event) {
@@ -47,24 +57,32 @@ class dbService {
   }
 
   loadInitial(successCallback) {
-    //Either load the existing default game or add it to the indexeddb.
-    this.getOrAdd(
-      this.db,
-      this.serverData?.default,
-      this.serverData.games.filter(
-        (game) => game.name == this.serverData.default,
-      )[0].path,
-      successCallback,
-    )
+    //Load the game metadata as we don't store that client-side
+    fetch(this.serverData.games.filter((game) => game.name == this.serverData.default)[0].path)
+      .then((result) => result.json())
+      .then((result) => {
+        this.getOrAdd(
+          this.db,
+          this.serverData?.default,
+          'games',
+          {title: result.title,
+          time: null},
+          (dbResult) => {
+            result.time = dbResult.time;
+            successCallback(result)
+          }
+        )
+      })
   }
 
   /// Get or add for the indexed db, key is the game title,
   /// source is the location where this service can perform an HTTP request to get the JSON data of a game.
-  getOrAdd(db, key, source, successCallback) {
+  /// Returns a promise for the db request.
+  getOrAdd(db, key, store, data, successCallback) {
     //Get the first game to load in to the nuzlocke table.
     var getReq = db
-      .transaction('games', 'readonly')
-      .objectStore('games')
+      .transaction(store, 'readonly')
+      .objectStore(store)
       .get(key)
 
     getReq.onsuccess = function (event) {
@@ -76,31 +94,29 @@ class dbService {
       } else {
         console.log("Debug: No saved game data found for key '" + key + "'")
 
-        fetch(source)
-          .then((result) => result.json())
-          .then((result) => {
-            db.transaction('games', 'readwrite')
-              .objectStore('games')
-              .add(result)
-            successCallback(result)
-          })
+        db.transaction(store, 'readwrite')
+          .objectStore(store)
+          .add(data)
+        successCallback()
       }
     }.bind(this) //Because this is set as a callback function we need to bind it to this instance of the dbService
+
+    return getReq.onsuccess;
   }
 
   ///Generic Save
   ///Key is optional if a keypath is being used
-  saveToDB(db, value, key) {
+  saveToDB(db, store, value, key) {
     console.log('Debug: Saving...')
     console.log(value)
 
-    db.transaction('games', 'readwrite').objectStore('games').put(value, key)
+    db.transaction(store, 'readwrite').objectStore(store).put(value, key)
   }
 
   ///Instance specific save
   ///Key is optional if a keypath is being used
-  save(value, key) {
-    this.saveToDB(this.db, value, key)
+  save(store, value, key) {
+    this.saveToDB(this.db, store, value, key)
   }
 }
 

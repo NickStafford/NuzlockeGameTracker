@@ -37,7 +37,7 @@ class NuzlockeTable extends React.Component {
     }))
 
     if (this.props.autosave) {
-      this.props.db.save({
+      this.props.db.save('games', {
         title: this.props.data.title,
         time: this.state.time})
     }
