@@ -1,0 +1,212 @@
+{
+  "title": "Pokémon SoulSilver",
+  "battleencounters": [
+    {
+      "title": "Rival - CherryGrove",
+      "location": "Cherrygrove Town",
+      "opponent": "Rival",
+      "level": 5
+    },
+    {
+      "title": "Falkner - Violet Gym",
+      "location": "Violet Town",
+      "opponent": "Falkner",
+      "level": 10
+    }
+  ],
+  "locations": [
+    {
+      "name": "Route 29"
+    },
+    {
+      "name": "Route 30"
+    },
+    {
+      "name": "Route 31"
+    },
+    {
+      "name": "Route 32"
+    },
+    {
+      "name": "Route 33"
+    },
+    {
+      "name": "Route 34"
+    },
+    {
+      "name": "Route 35"
+    },
+    {
+      "name": "Route 36"
+    },
+    {
+      "name": "Route 37"
+    },
+    {
+      "name": "Route 38"
+    },
+    {
+      "name": "Route 39"
+    },
+    {
+      "name": "Route 40"
+    },
+    {
+      "name": "Route 41"
+    },
+    {
+      "name": "Route 42"
+    },
+    {
+      "name": "Route 43"
+    },
+    {
+      "name": "Route 44"
+    },
+    {
+      "name": "Route 45"
+    },
+    {
+      "name": "Route 46"
+    },
+    {
+      "name": "Route 47"
+    },
+    {
+      "name": "Route 48"
+    },
+    {
+      "name": "Azalea Town"
+    },
+    {
+      "name": "Battle Frontier"
+    },
+    {
+      "name": "Bell Tower"
+    },
+    {
+      "name": "Bellchime Trail"
+    },
+    {
+      "name": "Blackthorn City"
+    },
+    {
+      "name": "Burned Tower"
+    },
+    {
+      "name": "Cherrygrove City"
+    },
+    {
+      "name": "Cianwood City"
+    },
+    {
+      "name": "Cliff Cave"
+    },
+    {
+      "name": "Cliff Edge Gate"
+    },
+    {
+      "name": "Dark Cave"
+    },
+    {
+      "name": "Dragon's Den"
+    },
+    {
+      "name": "Ecruteak City"
+    },
+    {
+      "name": "Embedded Tower"
+    },
+    {
+      "name": "Frontier Access"
+    },
+    {
+      "name": "Glitter Lighthouse"
+    },
+    {
+      "name": "Goldenrod City"
+    },
+    {
+      "name": "Goldenrod Radio Tower"
+    },
+    {
+      "name": "Goldenrod Underground"
+    },
+    {
+      "name": "Ice Path"
+    },
+    {
+      "name": "Ilex Forest"
+    },
+    {
+      "name": "Lake of Rage"
+    },
+    {
+      "name": "Mahogany Town"
+    },
+    {
+      "name": "Mt. Mortar"
+    },
+    {
+      "name": "Mt. Silver"
+    },
+    {
+      "name": "National Park"
+    },
+    {
+      "name": "New Bark Town"
+    },
+    {
+      "name": "Olivine City"
+    },
+    {
+      "name": "Pokéathlon Dome"
+    },
+    {
+      "name": "Roaming Johto"
+    },
+    {
+      "name": "Ruins of Alph"
+    },
+    {
+      "name": "Safari Zone Gate"
+    },
+    {
+      "name": "Sinjoh Ruins"
+    },
+    {
+      "name": "Slowpoke Well"
+    },
+    {
+      "name": "Sprout Tower"
+    },
+    {
+      "name": "SS Aqua"
+    },
+    {
+      "name": "Team Rocket HQ"
+    },
+    {
+      "name": "Tin Tower"
+    },
+    {
+      "name": "Union Cave"
+    },
+    {
+      "name": "Violet City"
+    },
+    {
+      "name": "Whirl Islands"
+    }
+  ],
+  "sprites": [
+    {
+      "name": "Rival",
+      "url": "https://cdn2.bulbagarden.net/upload/5/5d/Silver_OD.png"
+    },
+    {
+      "name": "Falkner",
+      "url": "https://cdn2.bulbagarden.net/upload/0/01/Falkner_IV_OD.png"
+    }
+  ]
+}

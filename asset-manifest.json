@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/NuzlockeGameTracker/static/css/main.102b5f84.chunk.css",
+    "main.js": "/NuzlockeGameTracker/static/js/main.26e58f8a.chunk.js",
+    "main.js.map": "/NuzlockeGameTracker/static/js/main.26e58f8a.chunk.js.map",
+    "runtime-main.js": "/NuzlockeGameTracker/static/js/runtime-main.7f401013.js",
+    "runtime-main.js.map": "/NuzlockeGameTracker/static/js/runtime-main.7f401013.js.map",
+    "static/css/2.a8ab508a.chunk.css": "/NuzlockeGameTracker/static/css/2.a8ab508a.chunk.css",
+    "static/js/2.b854aad0.chunk.js": "/NuzlockeGameTracker/static/js/2.b854aad0.chunk.js",
+    "static/js/2.b854aad0.chunk.js.map": "/NuzlockeGameTracker/static/js/2.b854aad0.chunk.js.map",
+    "static/js/3.b9c0f060.chunk.js": "/NuzlockeGameTracker/static/js/3.b9c0f060.chunk.js",
+    "static/js/3.b9c0f060.chunk.js.map": "/NuzlockeGameTracker/static/js/3.b9c0f060.chunk.js.map",
+    "index.html": "/NuzlockeGameTracker/index.html",
+    "static/css/2.a8ab508a.chunk.css.map": "/NuzlockeGameTracker/static/css/2.a8ab508a.chunk.css.map",
+    "static/css/main.102b5f84.chunk.css.map": "/NuzlockeGameTracker/static/css/main.102b5f84.chunk.css.map",
+    "static/js/2.b854aad0.chunk.js.LICENSE.txt": "/NuzlockeGameTracker/static/js/2.b854aad0.chunk.js.LICENSE.txt",
+    "static/media/logo.6ce24c58.svg": "/NuzlockeGameTracker/static/media/logo.6ce24c58.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.7f401013.js",
+    "static/css/2.a8ab508a.chunk.css",
+    "static/js/2.b854aad0.chunk.js",
+    "static/css/main.102b5f84.chunk.css",
+    "static/js/main.26e58f8a.chunk.js"
+  ]
+}

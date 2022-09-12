@@ -1,0 +1,23 @@
+{
+  "title": "Pokémon HeartGold",
+  "battleencounters": [
+    {
+      "title": "Rival - CherryGrove",
+      "location": "Cherrygrove",
+      "opponent": "Rival",
+      "level": 5,
+      "time": null
+    }
+  ],
+  "locations": [
+    {
+      "name": "Route 1"
+    }
+  ],
+  "sprites": [
+    {
+      "name": "Rival",
+      "url": "https://cdn2.bulbagarden.net/upload/5/5d/Silver_OD.png"
+    }
+  ]
+}

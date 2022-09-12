@@ -1,0 +1,13 @@
+{
+  "default": "Pokémon SoulSilver",
+  "games": [
+    {
+      "name": "Pokémon HeartGold",
+      "path": "data/pokemonhg.json"
+    },
+    {
+      "name": "Pokémon SoulSilver",
+      "path": "data/pokemonss.json"
+    }
+  ]
+}

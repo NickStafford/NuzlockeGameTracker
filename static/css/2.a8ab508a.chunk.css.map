@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack://node_modules/small-react-timer/dist/clock.css"],"names":[],"mappings":"AAAA,kBACC,oBACD","file":"2.a8ab508a.chunk.css","sourcesContent":[".timerComponent * {\r\n\tdisplay: inline-block;\r\n}"]}
